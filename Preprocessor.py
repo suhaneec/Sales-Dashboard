@@ -1,5 +1,5 @@
 import pandas as pd
-
+import streamlit as st
 # Fetching the date features
 def fetch_time_features(df):
     df["Date"] = pd.to_datetime(df["Date"])
@@ -12,3 +12,13 @@ def fetch_time_features(df):
     # Financial year
     df["Financial_Year"] = df.apply(lambda x: f"{x["Year"]} - {x["Year"]+1}" if x["Month"]>=4 else f"{x["Year"]-1} - {x["Year"]}", axis = 1)
     return df
+
+# Multiselect function
+def multiselect(title,options_list):
+    selected = st.sidebar.multiselect(title, options_list)
+    select_all = st.sidebar.checkbox("Select all", value = True, key = title)
+    if select_all:
+        selected_options = options_list
+    else:
+        selected_options = selected
+    return selected_options
