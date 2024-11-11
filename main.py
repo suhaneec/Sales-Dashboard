@@ -26,3 +26,18 @@ with col4:
     st.metric(label= 'Margin Percentage (in %)', value= int((filtered_df['Margin'].sum()/filtered_df['Amount'].sum())*100))
 yearly_sales = filtered_df[['Financial_Year', 'Financial_Month','Amount']].groupby(['Financial_Year', 'Financial_Month']).sum().reset_index().pivot(index = 'Financial_Month', columns = 'Financial_Year', values = 'Amount')
 st.line_chart(yearly_sales, x_label = 'Financial Month', y_label= 'Total Sales')
+
+col5, col6 = st.columns(2)
+#retailers revenue
+with col5:
+    st.title("Retailers count by revenue %")
+    retailer_count = Preprocessor.fetch_top_revenue_retailers(filtered_df)
+    retailer_count.set_index("percentage revenue", inplace = True)
+    st.bar_chart(retailer_count, x_label = "percentage revenue",y_label = "retailer_count")
+
+with col6:
+    st.title("Companies count by revenue %")
+    company_count = Preprocessor.fetch_top_revenue_companies(filtered_df)
+    company_count.set_index("percentage revenue", inplace = True)
+    st.bar_chart(company_count, x_label = "percentage revenue",y_label = "company_count")
+    
