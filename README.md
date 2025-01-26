@@ -1,4 +1,4 @@
-# 🎉 **Live Project Dashboard**
+# 🎉 **Sales Dashboard**
 
 🌐 **Live App**: [Explore the Dashboard](https://liveproject1.streamlit.app/)
 
@@ -20,7 +20,7 @@ An interactive dashboard designed to showcase and analyze key insights from data
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/live-project.git
+   git clone https://github.com/suhaneec/Sales-Dashboard
    cd live-project
 
 
